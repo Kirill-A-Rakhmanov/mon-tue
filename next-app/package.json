@@ -1,0 +1,41 @@
+{
+  "name": "@mon-tue/next-app",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/next:build",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "dist/apps/next-app"
+        }
+      },
+      "serve": {
+        "executor": "@nx/next:server",
+        "options": {
+          "buildTarget": "@mon-tue/next-app:build"
+        }
+      },
+      "lint": {
+        "executor": "@nx/linter:eslint",
+        "options": {
+          "lintFilePatterns": ["apps/next-app/**/*.{ts,tsx,js,jsx}"]
+        }
+      },
+      "test": {
+        "executor": "@nx/jest:jest",
+        "outputs": ["coverage/apps/next-app"],
+        "options": {
+          "jestConfig": "apps/next-app/jest.config.ts",
+          "passWithNoTests": true
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "next": "~15.2.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  }
+}
