@@ -2,5 +2,27 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./next-app-e2e"
+    },
+    {
+      "path": "./next-app"
+    },
+    {
+      "path": "./nest-app-e2e"
+    },
+    {
+      "path": "./nest-app"
+    },
+    {
+      "path": "./shared"
+    },
+    {
+      "path": "./next-app-e2e"
+    },
+    {
+      "path": "./next-app-e2e"
+    }
+  ]
 }
