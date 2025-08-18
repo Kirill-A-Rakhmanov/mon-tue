@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start:front": "nx serve @mon-tue/next-app",
-    "start:back": "nx serve @mon-tue/nest-app",
+    "start:back:local": "cross-env NODE_ENV=local nx serve @mon-tue/nest-app",
     "start:all": "nx run-many --target=serve --projects=@mon-tue/next-app,@mon-tue/nest-app --parallel",
     "build:front": "nx build @mon-tue/next-app",
     "build:back": "nx build @mon-tue/next-app",
@@ -15,9 +15,11 @@
   "private": true,
   "dependencies": {
     "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
     "@nestjs/platform-fastify": "^11.1.6",
+    "@nestjs/typeorm": "^11.0.0",
     "@nx/js": "^21.4.0",
     "@nx/nest": "^21.4.0",
     "axios": "^1.6.0",
@@ -25,10 +27,12 @@
     "fastify-compress": "^4.0.1",
     "fastify-helmet": "^7.0.1",
     "next": "~15.2.4",
+    "pg": "^8.16.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.0"
+    "rxjs": "^7.8.0",
+    "typeorm": "^0.3.25"
   },
   "devDependencies": {
     "@eslint/compat": "^1.1.1",
@@ -59,6 +63,7 @@
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0",
     "babel-jest": "^30.0.2",
+    "cross-env": "^10.0.0",
     "eslint": "^9.8.0",
     "eslint-config-next": "^15.2.4",
     "eslint-config-prettier": "^10.0.0",
@@ -84,6 +89,7 @@
   "workspaces": [
     "packages/*",
     "next-app",
+    "next-app-e2e",
     "nest-app",
     "nest-app-e2e",
     "shared"
