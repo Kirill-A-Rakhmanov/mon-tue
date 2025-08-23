@@ -3,8 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { typeOrmConfig } from '../typeorm/typeorm';
 import { EnvUtils } from '../utils/env-utils';
+import { AppDataSource } from '../configs/typeorm.config';
 
 @Module({
     imports: [
@@ -12,7 +12,7 @@ import { EnvUtils } from '../utils/env-utils';
             isGlobal: true,
             envFilePath: EnvUtils.getEnvFilePath(),
         }),
-        TypeOrmModule.forRootAsync(typeOrmConfig),
+        TypeOrmModule.forRootAsync(AppDataSource.options),
     ],
     controllers: [AppController],
     providers: [AppService],
